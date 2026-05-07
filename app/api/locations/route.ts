@@ -22,6 +22,8 @@ const SEED_LOCATIONS = [
   "Pittsburgh, PA",
   "Philadelphia, PA",
   "Minneapolis, MN",
+  "Indianapolis, IN",
+  "Milwaukee, WI",
   "Portland, OR",
   "Salt Lake City, UT",
   "Menlo Park, CA",
@@ -29,6 +31,25 @@ const SEED_LOCATIONS = [
   "Cupertino, CA",
   "Mountain View, CA",
   "Palo Alto, CA",
+  "Champaign, IL",
+  "Peoria, IL",
+  "Columbus, OH",
+  "Cincinnati, OH",
+  "Cleveland, OH",
+  "Detroit, MI",
+  "Ann Arbor, MI",
+  "St. Louis, MO",
+  "Kansas City, MO",
+  "Nashville, TN",
+  "Charlotte, NC",
+  "Miami, FL",
+  "Tampa, FL",
+  "Orlando, FL",
+  "San Diego, CA",
+  "Phoenix, AZ",
+  "Las Vegas, NV",
+  "New York City, NY",
+  "Brooklyn, NY",
 ];
 
 export async function GET(req: NextRequest) {
@@ -52,8 +73,8 @@ export async function GET(req: NextRequest) {
       "india", "germany", "france", "netherlands", "singapore",
       "japan", "china", "brazil", "mexico", "israel", "ireland",
     ];
-    // Looks like a clean single location: "Remote" or "City, ST" (exactly 2-letter state)
-    const CLEAN_LOCATION = /^(Remote|[A-Z][a-zA-Z\s.'-]+,\s*[A-Z]{2}$)/;
+    // Accept "Remote", "City, ST", or "City" (no state) — but not concatenated blobs
+    const CLEAN_LOCATION = /^(Remote|[A-Z][a-zA-Z\s.'-]+(,\s*[A-Z]{2})?)$/;
 
     const dbLocations = rows
       .map((r) => normalizeLocation(r.location.trim()))
