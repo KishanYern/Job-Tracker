@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import StatsCard from "@/components/StatsCard";
 import StatusBadge from "@/components/StatusBadge";
+import HeatmapCalendar from "@/components/HeatmapCalendar";
 import { ApplicationStatus } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 
@@ -213,6 +214,11 @@ export default function DashboardPage() {
           bgColor="rgba(239,68,68,0.1)"
           borderColor="rgba(239,68,68,0.2)"
         />
+      </div>
+
+      {/* Heatmap */}
+      <div style={{ marginBottom: 16 }}>
+        <HeatmapCalendar />
       </div>
 
       {/* Two-col: funnel + activity */}
