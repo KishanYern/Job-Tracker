@@ -42,3 +42,7 @@ next-env.d.ts
 
 # local database
 /data/
+
+# Cursor agent files
+AGENTS.md
+CLAUDE.md
